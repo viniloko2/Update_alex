@@ -9,7 +9,7 @@ import NavBar from "../components/navBar"
 export default function home(){
     return(
     <View>
-        <View style={style.navBar}>
+        <View>
             <NavBar/>
         </View>
         <View style = {style.container} >
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
         justifyContent: 'center',
         alignItems:"center",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignItems: "center",
         backgroundColor: 'white',
         marginTop: 30
@@ -40,12 +40,7 @@ const style = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row'
     },
-    navBar:{
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        marginTop: 50,
-        marginLeft: 20,
-    }
+    
 
 
 
