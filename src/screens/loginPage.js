@@ -30,12 +30,13 @@ export default function loginPage() {
 
      
 
-      <Image style={styles.logo} source={require('../assets/generic-logo.png')}/>
+      <Image style={styles.logo} source={require('../assets/Embrapa.png')}/>
 
-      <Input placeholder='email' 
-      keyboardType={'email-addres'}/>
-      
-
+      <TextInput
+      placeholder='email' 
+      style={styles.inputLogin}
+      keyboardType={'email-address'}/>
+       
       <TextInput 
         placeholder='Insira uma senha'
         style={styles.inputLogin}
@@ -43,7 +44,7 @@ export default function loginPage() {
         secureTextEntry={true}
       />
       <TouchableOpacity>
-        <Text style ={styles.Text}>
+        <Text style ={{color:'black'}}>
           Não possui um cadastro? Cadastre-se
         </Text>
       </TouchableOpacity>
@@ -59,12 +60,9 @@ export default function loginPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2b2726',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  Text:{
-    color:'white'
   },
   botaoPrincipal:{
     backgroundColor: 'blue',
@@ -78,9 +76,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   logo:{
-    width: 200,
+    width: 255,
     height: 200,
     borderRadius: 50,
     margin: 20
+  },
+  inputLogin:{
+    height: 60,
+    width: 250,
+    borderWidth: 0.5,
+    fontSize: 20,
+    margin: 20,
+    textAlign: 'center',
+    borderRadius: 20
   }
 });

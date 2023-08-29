@@ -58,7 +58,7 @@ export default function RegisterPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2b2726',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 20,
     textAlign: 'center',
-    backgroundColor: "white",
+    borderWidth: 0.5,
     borderRadius: 20
   }
 });

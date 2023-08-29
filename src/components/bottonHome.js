@@ -20,7 +20,7 @@ export default function BottonHome({textoBotao}){
 const formatacao = StyleSheet.create({
     botaoSecundario:{
         margin: 30,
-        backgroundColor: '#2b2726',
+        backgroundColor: '#13549b',
         height: 60,
         width: 150,
         borderRadius: 10,

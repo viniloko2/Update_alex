@@ -19,7 +19,7 @@ export default function Botton({textoBotao}){
 const formatacao = StyleSheet.create({
     botaoSecundario:{
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: '#13549b',
         height: 60,
         width: 240,
         borderRadius: 10,
@@ -27,7 +27,7 @@ const formatacao = StyleSheet.create({
         justifyContent: 'center',
     },
     textoBotaoSecundario:{
-        color: 'black',
+        color: 'white',
         fontSize: 20,
     }
 })
