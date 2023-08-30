@@ -6,7 +6,7 @@ import navBar from "../components/navBar"
 import NavBar from "../components/navBar"
 
 
-export default function home(){
+export default function Home(){
     return(
     <View>
         <View>

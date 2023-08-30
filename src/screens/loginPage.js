@@ -1,27 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState} from 'react';
 import Botton from '../components/botton';
-import Input from '../components/input';
 import { Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View, Linking, } from 'react-native';
 
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import { createStackNavigator } from '@react-navigation/stack';
-
-//const tab = createBottomTabNavigator();
-//const stack = createStackNavigator();
-
-
-/*function dados(loginProps){
-  const email = useState()
-  const senha = useState()
-
-  console.warn(senha, email)
-
-  return
-
-}*/
-
-export default function loginPage() {
+export default function LoginPage() {
 
 
   return (
