@@ -22,7 +22,9 @@ export default props =>(
               keyboardType={'numeric'}
               secureTextEntry={true}
             />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={
+              ()=> props.navigation.navigate("RegistePage")
+            }>
               <Text style ={{color:'black'}}>
                 Não possui um cadastro? Cadastre-se
               </Text>
@@ -31,7 +33,7 @@ export default props =>(
 
             <Botton textoBotao={"Login"} funcao = {
             
-                ()=> props.navigation.navigate("home")
+                ()=> props.navigation.navigate("Home")
               
             
               } />

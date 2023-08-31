@@ -6,11 +6,13 @@ import navBar from "../components/navBar"
 import NavBar from "../components/navBar"
 
 
-export default function Home(){
-    return(
+export default props =>(
+   
     <View>
         <View>
-            <NavBar/>
+            <NavBar funcao={
+                ()=>props.navigation.navigate("addRoom")
+            }/>
         </View>
         <View style = {style.container} >
             <BottonHome textoBotao={'reservado'}/>
@@ -22,8 +24,8 @@ export default function Home(){
         </View>
         
      </View>   
-    )
-}
+    
+)
 
 const style = StyleSheet.create({
     container:{

@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState} from 'react';
-import Botton from '../components/botton';
+import botton from '../components/botton';
 
 import { Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View, Linking, } from 'react-native';
+import Botton from '../components/botton';
 
 //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //import { createStackNavigator } from '@react-navigation/stack';
@@ -21,12 +22,9 @@ import { Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View, 
 
 }*/
 
-export default function RegisterPage() {
+export default props => (
 
-
-  return (
-
-    <View style={styles.container}>
+  <View style={styles.container}>
         <TextInput
       placeholder='nome'
       style = {styles.inputLogin}
@@ -48,12 +46,22 @@ export default function RegisterPage() {
         keyboardType={'numeric'}
         secureTextEntry={true}
       />
-      <Botton textoBotao={"Login"}  />
+      <Botton textoBotao={'Login'} funcao ={
+       ()=>props.navigation.navigate("Home")
+      
+      }/>
 
       <StatusBar style="auto"/>
     </View>
-  );
-}
+
+
+)
+
+
+
+
+    
+
 
 const styles = StyleSheet.create({
   container: {

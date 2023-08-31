@@ -1,17 +1,15 @@
 import { View, StyleSheet, Text, TouchableOpacity,Image } from 'react-native';
 
-export default function BottonRoom({textoBotao}){
-    return(
+export default props => (
+
         <View>
             <TouchableOpacity style={formatacao.botton}>
                  {/*<Image style={formatacao.image} source={require('../assets/people-roof.png')}/>*/}
-                 <Text style={formatacao.tex}>  {textoBotao} </Text>
+                 <Text style={formatacao.tex}>  {props.textoBotao} </Text>
             </TouchableOpacity> 
       
         </View>
     )
-}
-
 const formatacao = StyleSheet.create({
     botton:{
         margin: 30,

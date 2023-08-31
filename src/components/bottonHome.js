@@ -1,21 +1,20 @@
-import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity,} from 'react-native';
 
 
-export default function BottonHome({textoBotao}){
-    return(
+export default props => (
+
         <View>
             <TouchableOpacity style={formatacao.botaoSecundario}>
                 <View>
                 <Text style={formatacao.textoBotaoSecundario}>
-                    {textoBotao}
+                    {props.textoBotao}
 
                 </Text>
                 </View>
             </TouchableOpacity> 
       
         </View>
-    )
-}
+) 
 
 const formatacao = StyleSheet.create({
     botaoSecundario:{

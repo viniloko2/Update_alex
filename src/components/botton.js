@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Touchable, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
 
 export default props=>(
         <View >

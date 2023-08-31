@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import PassoStack from "../components/PassoStack"
 import RegisterPage from "../screens/RegisterPage"
 import LoginPage from "../screens/loginPage"
 import Home from "../screens/Home"
@@ -8,35 +7,33 @@ const Stack = createNativeStackNavigator()
 
 export default props =>(
     <Stack.Navigator initialRouteName="loginPage" screenOptions={{headerShown: false}}>
-        <Stack.Screen 
-            name="loginPage" 
+        <Stack.Screen name="loginPage" 
             options={{title:"tela login"}}
         >
             {
                 props => (
                     
-                    <PassoStack {...props} avancar="home">
-                        <LoginPage {...props}/>
-                    </PassoStack>
+                    <LoginPage {...props}/>
+                    
                 )
             }
         </Stack.Screen>
         
-        <Stack.Screen name="home">
+        <Stack.Screen name="RegistePage">
             {
                 props => (
-                    <PassoStack {...props} voltar avancar="TelaC">
-                        <RegisterPage/>
-                    </PassoStack>
+                    
+                        <RegisterPage {...props}/>
+                    
                 )
             }
         </Stack.Screen>
         <Stack.Screen name="Home">
             {
                 props => (
-                    <PassoStack {...props} voltar >
-                        <Home/>
-                    </PassoStack>
+                    
+                        <Home {...props}/>
+                    
                 )
             }
         </Stack.Screen>

@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-export default NavBar =>{
-    return(
+export default props =>(
+
+   
         <View style={style.navBar}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.funcao}>
                 <Image style={style.barsSolid} source={require('../assets/bars-solid.png')}></Image>
                 
             </TouchableOpacity>
@@ -12,8 +13,7 @@ export default NavBar =>{
             <Image style={style.search} source={require("../assets/search-icon.png")}></Image>
             </TouchableOpacity>
         </View>
-    )
-}
+)
 
 const style = StyleSheet.create({
     barsSolid:{
