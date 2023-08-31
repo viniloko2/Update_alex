@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Stack from "./Stack";
 
 export default props => (
-    <SafeAreaView style={{flex: 1, paddingTop: 20}}>
+    <SafeAreaView style={{flex: 1}}>
         <NavigationContainer>
             <Stack />
         </NavigationContainer>

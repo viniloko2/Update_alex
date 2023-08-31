@@ -3,41 +3,45 @@ import React, { useState} from 'react';
 import Botton from '../components/botton';
 import { Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View, Linking, } from 'react-native';
 
-export default function LoginPage() {
+export default props =>(
+
+            <View style={styles.container}>
+
+                
+
+            <Image style={styles.logo} source={require('../assets/Embrapa.png')}/>
+
+            <TextInput
+            placeholder='email' 
+            style={styles.inputLogin}
+            keyboardType={'email-address'}/>
+            
+            <TextInput 
+              placeholder='Insira uma senha'
+              style={styles.inputLogin}
+              keyboardType={'numeric'}
+              secureTextEntry={true}
+            />
+            <TouchableOpacity>
+              <Text style ={{color:'black'}}>
+                Não possui um cadastro? Cadastre-se
+              </Text>
+            </TouchableOpacity>
 
 
-  return (
+            <Botton textoBotao={"Login"} funcao = {
+            
+                ()=> props.navigation.navigate("home")
+              
+            
+              } />
 
-    <View style={styles.container}>
+            <StatusBar style='auto' />
+            </View>
 
-     
+)
 
-      <Image style={styles.logo} source={require('../assets/Embrapa.png')}/>
 
-      <TextInput
-      placeholder='email' 
-      style={styles.inputLogin}
-      keyboardType={'email-address'}/>
-       
-      <TextInput 
-        placeholder='Insira uma senha'
-        style={styles.inputLogin}
-        keyboardType={'numeric'}
-        secureTextEntry={true}
-      />
-      <TouchableOpacity>
-        <Text style ={{color:'black'}}>
-          Não possui um cadastro? Cadastre-se
-        </Text>
-      </TouchableOpacity>
-      
-
-      <Botton textoBotao={"Login"}  />
-
-      <StatusBar style='auto' />
-    </View>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {

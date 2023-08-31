@@ -7,21 +7,22 @@ import Home from "../screens/Home"
 const Stack = createNativeStackNavigator()
 
 export default props =>(
-    <Stack.Navigator initialRouteName="TelaA" screenOptions={{headerShown: false}}>
+    <Stack.Navigator initialRouteName="loginPage" screenOptions={{headerShown: false}}>
         <Stack.Screen 
-            name="login" 
+            name="loginPage" 
             options={{title:"tela login"}}
         >
             {
                 props => (
-                    <PassoStack {...props} avancar="register">
-                        <LoginPage/>
+                    
+                    <PassoStack {...props} avancar="home">
+                        <LoginPage {...props}/>
                     </PassoStack>
                 )
             }
         </Stack.Screen>
         
-        <Stack.Screen name="RegisterPage">
+        <Stack.Screen name="home">
             {
                 props => (
                     <PassoStack {...props} voltar avancar="TelaC">

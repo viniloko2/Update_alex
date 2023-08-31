@@ -1,20 +1,26 @@
 import { View, StyleSheet, Text, Touchable, TouchableOpacity, Button } from 'react-native';
 
-export default function Botton({textoBotao}){
-    return(
-        <View>
-            <TouchableOpacity style={formatacao.botaoSecundario}>
-                <View>
+export default props=>(
+        <View >
+            <TouchableOpacity onPress={props.funcao} style={formatacao.botaoSecundario}>
+                <View >
+                    
                 <Text style={formatacao.textoBotaoSecundario}>
-                    {textoBotao}
-
+                    {props.textoBotao}
+                    
                 </Text>
                 </View>
             </TouchableOpacity> 
       
         </View>
-    )
-}
+)
+
+    
+       
+    
+
+
+  
 
 const formatacao = StyleSheet.create({
     botaoSecundario:{
