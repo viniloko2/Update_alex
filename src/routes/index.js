@@ -9,4 +9,6 @@ export default props => (
             <Drawer/>
         </NavigationContainer>
     </SafeAreaView>
+    
 )
+

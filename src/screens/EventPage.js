@@ -7,7 +7,7 @@ import Botton from "../components/botton"
 
 export default props =>(
    
-    <View>
+    <View style={{justifyContent: "space-around"}}>
         <View > 
             <NavBar funcao={
                 ()=>props.navigation.openDrawer() 
