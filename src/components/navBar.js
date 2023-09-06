@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Icon } from "react-native-vector-icons/Icon";
 
 export default props =>(
 
@@ -17,12 +18,10 @@ export default props =>(
 
 const style = StyleSheet.create({
     barsSolid:{
-
         width: 25,
         height: 25
     },
     search:{
-
         width: 25,
         height: 25
     },
