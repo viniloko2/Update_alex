@@ -1,46 +1,41 @@
-import { View,  StyleSheet, TextInput } from "react-native"
+import { View,  StyleSheet, TextInput, ActivityIndicator } from "react-native"
 import NavBar from "../components/navBar"
 import Botton from "../components/botton"
-
-
-
+import { useState, useEffect } from "react"
+import DatePickerApp from "../components/DatePicker"
+import api from "../Services/api"   
 
 export default props =>(
-   
+
     <View style={{justifyContent: "space-around"}}>
         <View > 
+        
             <NavBar funcao={
                 ()=>props.navigation.openDrawer() 
             }/>
         </View>
         <View style={style.container} >
             <TextInput
-            placeholder='nome'
+            placeholder='Evento'
             style = {style.inputLogin}
             keyboardType='name-phone-pad'/>
             <TextInput
-            placeholder='telefone'
+            placeholder='Descrição'
             style = {style.inputLogin}
             keyboardType='numeric'/>
+
             
             <TextInput 
-                placeholder='E-mail'
+                placeholder='Sala'
                 style={style.inputLogin}
                 keyboardType={'email-address'}
             />
-
-            <TextInput 
-                placeholder='senha'
-                style={style.inputLogin}
-                keyboardType={'numeric'}
-                secureTextEntry={true}
-            />
-
             <Botton textoBotao={"cadastrar"} />
+
+            {/*<ActivityIndicator size={"large"}/>*/}
         </View>
-     </View>  
+     </View>  )
     
-)
 
 const style = StyleSheet.create({
     container: {
@@ -56,7 +51,10 @@ const style = StyleSheet.create({
         textAlign: 'center',
         borderWidth: 0.5,
         borderRadius: 20
-      }
+      },
+      datePickerStyle: {
+        width: 230,
+      },
     
 
 

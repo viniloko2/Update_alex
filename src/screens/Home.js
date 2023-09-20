@@ -3,10 +3,28 @@ import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity } from "reac
 import BottonHome from "../components/bottonHome"
 import BottonRoom from "../components/bottonRoom"
 import NavBar from "../components/navBar"
+import api from "../Services/api"
+import { useEffect, useState } from "react"
 
+/*api.get("/salas")
+          .then((response) => {
+            console.log(response.data);
+          }).catch((error)=>{
+            console.log(error)
+          }),*/
+
+const [salas, setSalas] = useState([])
 
 export default props =>(
-   
+
+    useEffect(()=>{
+        api.get("/salas").then((response)=>{
+               setSalas(response.data)
+        }).catch((error) =>{
+         console.log(error)
+        })
+    },[]),
+
     <View>
         <View>
             <NavBar funcao={
@@ -21,8 +39,6 @@ export default props =>(
             <BottonRoom textoBotao={'sala01'}/>
             <BottonRoom textoBotao={'sala02'}/>
         </View>
-        
-        
      </View>   
     
 )

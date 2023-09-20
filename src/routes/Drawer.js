@@ -5,6 +5,7 @@ import Home from "../screens/Home";
 import { SafeAreaView } from "react-native-safe-area-context";
 import loginPage from "../screens/loginPage";
 import EventPage from "../screens/EventPage";
+import RegisterPage from "../screens/RegisterPage";
 
 const Drawer = createDrawerNavigator()
 
