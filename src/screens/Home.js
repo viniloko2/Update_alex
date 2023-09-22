@@ -1,63 +1,72 @@
-import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
+import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList } from "react-native"
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import BottonHome from "../components/bottonHome"
 import BottonRoom from "../components/bottonRoom"
 import NavBar from "../components/navBar"
 import api from "../Services/api"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import UserContext from "../context/userContext"
+import users from "../data/users"
 
-/*api.get("/salas")
-          .then((response) => {
-            console.log(response.data);
-          }).catch((error)=>{
-            console.log(error)
-          }),*/
+export default props => {
 
-const [salas, setSalas] = useState([])
+    function getUserItem({ item: user }) {
+        return (
+            <View>
+                <NavBar funcao={
+                () => props.navigation.openDrawer()
+            } />
+                <Text>
+                    {user.login}
+                </Text>
 
-export default props =>(
 
-    useEffect(()=>{
-        api.get("/salas").then((response)=>{
-               setSalas(response.data)
-        }).catch((error) =>{
-         console.log(error)
-        })
-    },[]),
+            </View>
+        )
+    }
+    return (
+        <View>
+            <FlatList
+                data={users}
+                keyExtractor={user => user.id}
+                renderItem={getUserItem}
+            />
+        </View>
+    )
 
-    <View>
+
+}
+
+/*<View>
         <View>
             <NavBar funcao={
-                ()=>props.navigation.openDrawer()
-            }/>
+                () => props.navigation.openDrawer()
+            } />
         </View>
-        <View style = {style.container} >
-            <BottonHome textoBotao={'reservado'}/>
-            <BottonHome textoBotao={'disponivel'}/>
+        <View style={style.container} >
+            <BottonHome textoBotao={'reservado'} />
+            <BottonHome textoBotao={'disponivel'} />
         </View>
-        <View style={style.grid}> 
-            <BottonRoom textoBotao={'sala01'}/>
-            <BottonRoom textoBotao={'sala02'}/>
+        <View style={style.grid}>
+            <BottonRoom textoBotao={'sala01'} />
+            <BottonRoom textoBotao={'sala02'} />
         </View>
-     </View>   
-    
-)
-
+    </View>*/
 const style = StyleSheet.create({
-    container:{
+    container: {
         justifyContent: 'center',
-        alignItems:"center",
+        alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
         marginTop: 30
 
     },
-    grid:{
+    grid: {
         justifyContent: 'center',
         flexDirection: 'row'
     },
-    
+
 
 
 

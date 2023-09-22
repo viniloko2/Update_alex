@@ -7,7 +7,6 @@ import Tab from "./Tab";
 export default props => (
     <SafeAreaView style={{flex: 1}} >
         <NavigationContainer>
-        
           <Drawer/>
         </NavigationContainer>
     </SafeAreaView>
