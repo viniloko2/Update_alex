@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useContext, useState } from 'react';
 import Botton from '../components/botton';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import UserContext from '../context/userContext';
 import users from '../data/users';
 
@@ -50,9 +50,10 @@ export default props => {
         () => {
           const userLogado = users.filter(u => u.email === valorEmail)[0]
           if (userLogado) {
-            userLogado.senha == valorSenha ? props.navigation.navigate("Home") : console.warn("Usuário e/ou Senha incorreta!")
+            userLogado.senha == valorSenha ? props.navigation.navigate("Home") : Alert.alert('Usuario incorreto ')
           } else {
-            console.warn("Usuário e/ou Senha incorreta!")
+            Alert.alert('Usuario incorreto ')
+
           }
         }
 
