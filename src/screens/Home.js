@@ -1,4 +1,4 @@
-import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList } from "react-native"
+import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList, ActivityIndicator, Button  } from "react-native"
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import BottonHome from "../components/bottonHome"
 import BottonRoom from "../components/bottonRoom"
@@ -10,62 +10,54 @@ import UserContext from "../context/userContext"
 import rooms from "../data/rooms"
 
 export default props => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [data, setData] = useState([]);
 
-    const { state, dispatch } = useContext(UserContext)
+    const URL = "https://localhost:7198/api/sala";
 
-    
 
-    function getUserItem({ item: rooms }) {
-        return (
-
-            <ListItem>
-
-                <ListItem.Content>
-                    <ListItem.Title><Text>Sala: </Text>{rooms.nome}</ListItem.Title>
-                    <ListItem.Title><Text>capacidade: </Text>{rooms.capacidade}</ListItem.Title>
-                    <ListItem.Title><Text>Bloco: </Text>{rooms.bloco}</ListItem.Title>
-                    <ListItem.Title><Text>andar: </Text>{rooms.andar}</ListItem.Title>
-                    <ListItem.Title><Text>numero: </Text>{rooms.numero}</ListItem.Title>
-                    <ListItem.Chevron>
-
-                    </ListItem.Chevron>
-                </ListItem.Content>
-            </ListItem>
-
-        )
+    const getMovies = async () => {
+        try{
+            const response = await fetch(URL);
+            const json = await response.json();
+            console.log(json);
+            setData(json);
+        } catch(error) {
+            console.error(error);
+        }finally{
+            setIsLoading(false);
+        }
     }
-    return (
-        <View>
 
-            <NavBar funcao={
-                () => props.navigation.openDrawer()
-            } />
-            <FlatList
-                data={rooms}
-                keyExtractor={rooms => rooms.id}
-                renderItem={getUserItem}
-            />
-        </View>
+    useEffect(()=>{
+        getMovies();
+    }, [])
+
+    return(
+        <>
+            <View>
+                <NavBar></NavBar>
+
+                {isLoading ? (
+                    <ActivityIndicator size={80}></ActivityIndicator>
+                ) : (
+                    <FlatList 
+                        data={data}
+                        keyExtractor={({id})=>id}
+                        renderItem={ ({item})=>(
+                            <Text>
+                                - nome: {item.nome} - capacidade: {item.capacidade} - descricao: {item.descricao} 
+                            </Text>
+                        )
+                        }
+                    />
+                )
+                }
+                <Button title="Atualizar" onPress={ () => getMovies()} />
+            </View>
+        </>
     )
-
-
 }
-
-/*<View>
-        <View>
-            <NavBar funcao={
-                () => props.navigation.openDrawer()
-            } />
-        </View>
-        <View style={style.container} >
-            <BottonHome textoBotao={'reservado'} />
-            <BottonHome textoBotao={'disponivel'} />
-        </View>
-        <View style={style.grid}>
-            <BottonRoom textoBotao={'sala01'} />
-            <BottonRoom textoBotao={'sala02'} />
-        </View>
-    </View>*/
 const style = StyleSheet.create({
     container: {
         justifyContent: 'center',

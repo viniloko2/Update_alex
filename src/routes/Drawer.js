@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+/*import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import addRoom from "../screens/addRoom";
 import Home from "../screens/Home";
@@ -22,4 +22,4 @@ export default props =>(
 
             
     
-)
+)*/
