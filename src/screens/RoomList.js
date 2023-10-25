@@ -2,13 +2,13 @@ import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList, A
 import NavBar from "../components/navBar"
 import { ListItem } from "@rneui/base"
 import { useEffect, useState, useContext } from "react"
-import UserContext from "../context/userContext"
+import Botton from "../components/botton"
 
 export default props => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    const URL = "https://localhost:7198/api/reserva";
+    const URL = "https://localhost:7198/api/sala";
 
 
     const getMovies = async () => {
@@ -31,8 +31,6 @@ export default props => {
     return(
         <>
             <View>
-                <NavBar></NavBar>
-
                 {isLoading ? (
                     <ActivityIndicator size={80}></ActivityIndicator>
                 ) : (
@@ -49,6 +47,13 @@ export default props => {
                 )
                 }
                 <Button title="Atualizar" onPress={ () => getMovies()} />
+            </View>
+            <View>
+                <Botton textoBotao={"cadastrar"} funcao={
+                () => {
+                    props.navigation.navigate("addRoom")        
+                 }
+}/>          
             </View>
         </>
     )

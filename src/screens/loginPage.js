@@ -7,10 +7,6 @@ import users from '../data/users';
 
 export default props => {
 
-  [valorEmail, setValorEmail] = useState("");
-  [valorSenha, setValorSenha] = useState("");
-  const { state } = useContext(UserContext)
-
 
   return (
 
@@ -25,14 +21,12 @@ export default props => {
         placeholder='email'
         style={styles.inputLogin}
         keyboardType={'email-address'}
-        value={valorEmail}
-        onChangeText={(valorEmail) => setValorEmail(valorEmail)} />
+         />
 
       <TextInput
         placeholder='Insira uma senha'
         style={styles.inputLogin}
-        value={valorSenha}
-        onChangeText={(valorSenha) => setValorSenha(valorSenha)}
+        
         secureTextEntry={true}
 
       />
@@ -48,13 +42,8 @@ export default props => {
       <Botton textoBotao={"Login"} funcao={
 
         () => {
-          const userLogado = users.filter(u => u.email === valorEmail)[0]
-          if (userLogado) {
-            userLogado.senha == valorSenha ? props.navigation.navigate("Home") : Alert.alert('Usuario incorreto ')
-          } else {
-            Alert.alert('Usuario incorreto ')
-
-          }
+          props.navigation.navigate("Home")
+          
         }
 
 

@@ -108,9 +108,14 @@ export default ({route, navigation}) => {
             </View>
             
             
-            <Botton textoBotao={"cadastrar"} funcao={
-                () => {doPost(), props.navigation.navigate("Home")} 
-} />
+            <Botton textoBotao={"Cadastrar"} funcao={
+                ()=>{ doPost(), props.navigation.navigate("RoomList")
+
+                }
+
+            }>
+
+            </Botton>
         </View>
      </View>  
         )

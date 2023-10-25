@@ -1,8 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import EventPage from "../screens/EventPage"
-import addRoom from "../screens/addRoom"
 import FontAwesome from "@expo/vector-icons/FontAwesome"
-import Stack from "./Stack"
+import UserList from "../screens/UserList"
+import Home from "../screens/Home"
+import StackRoom from "./Stack/StackRoom"
+import StackUser from "./Stack/StackUser"
+
 
 
 const Tab = createBottomTabNavigator()
@@ -10,7 +12,7 @@ const Tab = createBottomTabNavigator()
 export default props => (
     <Tab.Navigator screenOptions={{
         tabBarLabelStyle: {fontSize: 50},
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: 'gray',
         tabBarInactiveTintColor: 'blue',
         headerShown: false,
         tabBarShowLabel: false
@@ -18,8 +20,8 @@ export default props => (
         
     }}>
         <Tab.Screen 
-            name="Evento" 
-            component={EventPage}
+            name="Reserva" 
+            component={Home}
             options={{
                 tabBarLabel: 'Home',
                 tabBarIcon: ({color, size}) =>(
@@ -28,12 +30,22 @@ export default props => (
             }}
         />
         <Tab.Screen 
-            name="Salas" 
-            component={addRoom} 
+            name="Usuario" 
+            component={StackUser} 
             options={{
                 tabBarLabel: 'User',
                 tabBarIcon: ({color, size})=>(
                     <FontAwesome name="user-md" color={color} size={size} />
+                )
+            }}      
+        />
+        <Tab.Screen 
+            name="Salas" 
+            component={StackRoom} 
+            options={{
+                tabBarLabel: 'User',
+                tabBarIcon: ({color, size})=>(
+                    <FontAwesome name="list" color={color} size={size} />
                 )
             }}      
         />

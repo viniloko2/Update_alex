@@ -1,9 +1,7 @@
 import { View,  StyleSheet, TextInput, ActivityIndicator } from "react-native"
 import NavBar from "../components/navBar"
 import Botton from "../components/botton"
-import { useState, useEffect } from "react"
-import DatePickerApp from "../components/DatePicker"
-import api from "../Services/api"   
+  
 
 export default props =>(
 
@@ -16,7 +14,7 @@ export default props =>(
         </View>
         <View style={style.container} >
             <TextInput
-            placeholder='Evento'
+            placeholder='Reservista'
             style = {style.inputLogin}
             keyboardType='name-phone-pad'/>
             <TextInput

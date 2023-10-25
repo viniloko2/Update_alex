@@ -3,12 +3,13 @@ import NavBar from "../components/navBar"
 import { ListItem } from "@rneui/base"
 import { useEffect, useState, useContext } from "react"
 import UserContext from "../context/userContext"
+import Botton from "../components/botton"
 
 export default props => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    const URL = "https://localhost:7198/api/reserva";
+    const URL = "https://localhost:7198/api/usuario";
 
 
     const getMovies = async () => {
@@ -31,7 +32,6 @@ export default props => {
     return(
         <>
             <View>
-                <NavBar></NavBar>
 
                 {isLoading ? (
                     <ActivityIndicator size={80}></ActivityIndicator>
@@ -41,7 +41,7 @@ export default props => {
                         keyExtractor={({id})=>id}
                         renderItem={ ({item})=>(
                             <Text>
-                                - nome: {item.nome} - capacidade: {item.capacidade} - descricao: {item.descricao} 
+                                - nome: {item.nome} - email: {item.email} - Telefone: {item.telefone} 
                             </Text>
                         )
                         }
@@ -49,6 +49,14 @@ export default props => {
                 )
                 }
                 <Button title="Atualizar" onPress={ () => getMovies()} />
+            </View>
+            <View>
+            <Botton textoBotao={"Cadastrar"} funcao={
+                ()=>{ props.navigation.navigate("RegisterPage")
+
+                }
+
+            }/>
             </View>
         </>
     )
