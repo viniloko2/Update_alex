@@ -7,6 +7,11 @@ import Botton from "../components/botton"
 export default props => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [expandedCardIndex, setExpandedCardIndex] = useState(null);
+
+    const toggleCard = index => {
+      setExpandedCardIndex(index === expandedCardIndex ? null : index);
+    };
 
     const URL = "https://localhost:7198/api/sala";
 
@@ -30,50 +35,49 @@ export default props => {
 
     return(
         <>
-            <View>
-                {isLoading ? (
-                    <ActivityIndicator size={80}></ActivityIndicator>
-                ) : (
-                    <FlatList 
-                        data={data}
-                        keyExtractor={({id})=>id}
-                        renderItem={ ({item})=>(
-                            <Text>
-                                - nome: {item.nome} - capacidade: {item.capacidade} - descricao: {item.descricao} 
-                            </Text>
-                        )
-                        }
-                    />
-                )
-                }
-                <Button title="Atualizar" onPress={ () => getMovies()} />
-            </View>
-            <View>
-                <Botton textoBotao={"cadastrar"} funcao={
-                () => {
-                    props.navigation.navigate("addRoom")        
-                 }
-}/>          
-            </View>
+            <View style={styles.container}>
+      {data.length === 0 ? (
+        <Text>Você não possui nenhuma sala cadastrada ainda</Text>
+      ) : (
+        data.map((data, index) => (
+          <View key={index} style={styles.roomCard}>
+            <TouchableOpacity onPress={() => toggleCard(index)}>
+              <Text>{data.name}</Text>
+            </TouchableOpacity>
+            {expandedCardIndex === index && (
+              <View>
+                <Text>Total de lugares: {data.totalLugares}</Text>
+                <Text>Andar: {data.andar}</Text>
+                <Text>Bloco: {data.bloco}</Text>
+                  <Text>Descrição: {data.descricao.substring(0, 50)}</Text>
+                {/* Limita a descrição a 20 caracteres */}
+              </View>
+            )}
+          </View>
+        ))
+      )}
+      <View style={styles.buttonContainer}>
+        
+      </View>
+    </View>
         </>
     )
 }
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        marginTop: 30
-
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
     },
-    grid: {
-        justifyContent: 'center',
-        flexDirection: 'row'
+    roomCard: {
+      backgroundColor: '#CCCCCC',
+      padding: 20,
+      marginVertical: 10,
+      borderRadius: 10,
+      width: '100%',
     },
-
-
-
-
-})
+    buttonContainer: {
+      marginTop: 20,
+    },
+  });

@@ -25,7 +25,7 @@ export default props => (
             options={{
                 tabBarLabel: 'Home',
                 tabBarIcon: ({color, size}) =>(
-                    <FontAwesome name="home" color={color} size={size} />
+                    <FontAwesome name="list" color={color} size={size} />
                 )
             }}
         />
@@ -35,7 +35,7 @@ export default props => (
             options={{
                 tabBarLabel: 'User',
                 tabBarIcon: ({color, size})=>(
-                    <FontAwesome name="user-md" color={color} size={size} />
+                    <FontAwesome name="user" color={color} size={size} />
                 )
             }}      
         />
@@ -45,7 +45,7 @@ export default props => (
             options={{
                 tabBarLabel: 'User',
                 tabBarIcon: ({color, size})=>(
-                    <FontAwesome name="list" color={color} size={size} />
+                    <FontAwesome name="home" color={color} size={size} />
                 )
             }}      
         />
