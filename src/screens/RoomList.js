@@ -1,4 +1,4 @@
-import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList, ActivityIndicator, Button  } from "react-native"
+import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList, ActivityIndicator, Button,  RefreshControl, ScrollView} from "react-native"
 import NavBar from "../components/navBar"
 import { ListItem } from "@rneui/base"
 import { useEffect, useState, useContext } from "react"
@@ -8,6 +8,7 @@ export default props => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
     const [expandedCardIndex, setExpandedCardIndex] = useState(null);
+    const [refreshing, setRefreshing] = useState(false);
 
     const toggleCard = index => {
       setExpandedCardIndex(index === expandedCardIndex ? null : index);
@@ -28,6 +29,10 @@ export default props => {
             setIsLoading(false);
         }
     }
+    const onRefresh = () => {
+      setRefreshing(true);
+      getMovies().then(() => setRefreshing(false));
+  };
 
     useEffect(()=>{
         getMovies();
@@ -35,6 +40,9 @@ export default props => {
 
     return(
         <>
+        <View style={styles.cont}>
+        <Text style={styles.texto}>Salas Criadas</Text>
+        </View>
             <View style={styles.container}>
       {data.length === 0 ? (
         <Text>Você não possui nenhuma sala cadastrada ainda</Text>
@@ -61,8 +69,8 @@ export default props => {
       </View>
     </View>
         </>
-    )
-}
+    );
+};
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -80,4 +88,22 @@ const styles = StyleSheet.create({
     buttonContainer: {
       marginTop: 20,
     },
+    cont: {
+      width: 395,
+      height: 143,
+      backgroundColor: "#28364D",
+      borderRadius: 30,
+  },
+  texto: {
+    width: 266,
+    height: 39,
+    color: '#FAFAFA',
+    fontStyle: 'normal',
+    fontSize: 30,
+    alignItems: 'center',
+    fontFamily: 'Inter',
+    marginLeft: 99,
+    marginTop: 80,
+    fontWeight: '700',
+  },
   });

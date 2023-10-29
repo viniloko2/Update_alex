@@ -1,82 +1,80 @@
-import { View, StatusBar, Text, StyleSheet, Image, TouchableOpacity, FlatList, ActivityIndicator, Button  } from "react-native"
-import NavBar from "../components/navBar"
-import { ListItem } from "@rneui/base"
-import { useEffect, useState, useContext } from "react"
-import UserContext from "../context/userContext"
-import Botton from "../components/botton"
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, FlatList, ActivityIndicator, Button, ScrollView, RefreshControl } from "react-native";
+import Botton from "../components/botton";
 
-export default props => {
+const YourComponent = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [isRefreshing, setIsRefreshing] = useState(false);
 
     const URL = "https://localhost:7198/api/usuario";
 
-
     const getMovies = async () => {
-        try{
+        try {
             const response = await fetch(URL);
             const json = await response.json();
             console.log(json);
             setData(json);
-        } catch(error) {
+        } catch (error) {
             console.error(error);
-        }finally{
+        } finally {
             setIsLoading(false);
+            setIsRefreshing(false);
         }
-    }
+    };
 
-    useEffect(()=>{
+    useEffect(() => {
         getMovies();
-    }, [])
+    }, []);
 
-    return(
-        <>
+    const onRefresh = async () => {
+        setIsRefreshing(true);
+        await getMovies();
+    };
+
+    return (
+        <ScrollView
+            style={styles.container}
+            contentContainerStyle={styles.contentContainer}
+            refreshControl={
+                <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+            }
+        >
             <View>
-
                 {isLoading ? (
-                    <ActivityIndicator size={80}></ActivityIndicator>
+                    <ActivityIndicator size={80} />
                 ) : (
-                    <FlatList 
+                    <FlatList
                         data={data}
-                        keyExtractor={({id})=>id}
-                        renderItem={ ({item})=>(
+                        keyExtractor={({ id }) => id.toString()}
+                        renderItem={({ item }) => (
                             <Text>
-                                - nome: {item.nome} - email: {item.email} - Telefone: {item.telefone} 
+                                - nome: {item.nome} - email: {item.email} - Telefone: {item.telefone}
                             </Text>
-                        )
-                        }
+                        )}
                     />
-                )
-                }
-                <Button title="Atualizar" onPress={ () => getMovies()} />
+                )}
+                
+                <Botton
+                    textoBotao={"Cadastrar"}
+                    funcao={() => {
+                        props.navigation.navigate("RegisterPage");
+                    }}
+                />
             </View>
-            <View>
-            <Botton textoBotao={"Cadastrar"} funcao={
-                ()=>{ props.navigation.navigate("RegisterPage")
+        </ScrollView>
+    );
+};
 
-                }
-
-            }/>
-            </View>
-        </>
-    )
-}
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        marginTop: 30
-
+        flex: 1,
+        backgroundColor: "#fff",
     },
-    grid: {
-        justifyContent: 'center',
-        flexDirection: 'row'
+    contentContainer: {
+        alignItems: "center",
+        justifyContent: "center",
     },
+});
 
-
-
-
-})
+export default YourComponent;

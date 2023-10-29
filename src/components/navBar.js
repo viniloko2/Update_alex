@@ -6,11 +6,11 @@ export default props =>(
    
         <View style={style.navBar}>
             <TouchableOpacity onPress={props.funcao}>
-                <Image style={style.barsSolid} source={require('../assets/bars-solid.png')}></Image>
+                <Image style={style.barsSolid} source={require('../assets/icon.png')}></Image>
                 
             </TouchableOpacity>
             <TouchableOpacity>
-            <Image style={style.search} source={require("../assets/search-icon.png")}></Image>
+            <Image style={style.search} source={require("../assets/search.png")}></Image>
             </TouchableOpacity>
         </View>
 )
@@ -21,8 +21,8 @@ const style = StyleSheet.create({
         height: 25
     },
     search:{
-        width: 25,
-        height: 25
+        width: 30,
+        height: 30
     },
     navBar:{
         flexDirection: 'row',

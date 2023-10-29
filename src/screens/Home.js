@@ -12,6 +12,7 @@ export default props => {
 
 
     const getMovies = async () => {
+        setIsLoading(true);
         try{
             const response = await fetch(URL);
             const json = await response.json();
@@ -30,9 +31,11 @@ export default props => {
 
     return(
         <>
+        <View style={style.cont}>
             <View>
+                
                 <NavBar></NavBar>
-
+                <Text style={style.texto}>Inicio</Text>
                 {isLoading ? (
                     <ActivityIndicator size={80}></ActivityIndicator>
                 ) : (
@@ -46,10 +49,17 @@ export default props => {
                         )
                         }
                     />
+                    
                 )
                 }
-                <Button title="Atualizar" onPress={ () => getMovies()} />
-            </View>
+                </View>
+                </View>
+                <View style={style.buttonCent}>
+                <TouchableOpacity onPress={() => getMovies()} style={style.button}>
+                    <Text style={style.buttonText}>Atualizar</Text>
+                </TouchableOpacity>
+                </View>
+            
         </>
     )
 }
@@ -67,8 +77,41 @@ const style = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row'
     },
-
-
-
-
+    buttonCent: {
+        marginTop: 100,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    button: {
+        width: 150,
+        height: 50,
+        borderRadius: 25, // Um valor alto para tornar o botão mais redondo
+        backgroundColor: "#28364D", // Cor de fundo do botão
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    buttonText: {
+        color: "#FAFAFA", // Cor do texto do botão
+        fontSize: 18,
+    },
+    cont: {
+        width: 395,
+        height: 143,
+        backgroundColor: "#28364D",
+        borderRadius: 30,
+    },
+    texto: {
+    width: 266,
+    height: 39,
+    color: '#FAFAFA',
+    fontStyle: 'normal',
+    fontSize: 30,
+    marginLeft: 157,
+    fontWeight: '700',
+    marginTop: 5,
+      },
+      scrollView: {
+        flex: 1,
+        width: "100%",
+    },
 })
